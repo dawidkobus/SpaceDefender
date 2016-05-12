@@ -67,7 +67,7 @@ public abstract class Spaceship extends GameObject{
         for(Projectile p : projectilesDown){
             p.update(delta);
         }
-        this.sprite.setImageColor(255, 255, 255);
+        sprite.setImageColor(255, 255, 255);
     }
     
     protected void fireProjectiles(Vector2f velocity, Projectile p){
@@ -109,7 +109,7 @@ public abstract class Spaceship extends GameObject{
         for(Projectile op : otherProjectiles){
             if(op.isAlive() && op.collidesWith(this)){
                 op.destroy();
-                this.sprite.setImageColor(255, 0, 0);
+                sprite.setImageColor(255, 0, 0);
                 lives -= op.getDamage();
                 hitSound.play();
                 if(lives < 1 && alive){
@@ -121,7 +121,7 @@ public abstract class Spaceship extends GameObject{
     
     public void checkSpaceshipCollision(Spaceship otherSpaceship){
         if(otherSpaceship.collidesWith(this)){
-            this.sprite.setImageColor(255, 0, 0);
+            sprite.setImageColor(255, 0, 0);
             lives -= otherSpaceship.getDamage();
             if(lives < 1 && alive){
                 destroy();

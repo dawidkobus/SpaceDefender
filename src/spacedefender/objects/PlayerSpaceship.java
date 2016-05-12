@@ -49,32 +49,35 @@ public class PlayerSpaceship extends Spaceship{
     }
     
     public void update(GameContainer gc, int delta){
-        super.update(delta);
-        
-        if(gc.getInput().isKeyDown(Input.KEY_SPACE)){
-            shootingTime += delta;
-            if(timeSinceLastShot > projectilesFireRate){
-                fireProjectiles(new Vector2f(projectilesSpeed, 0), new Projectile());
-                shootSound.play();
+        if(alive){
+            super.update(delta);
+
+            if(gc.getInput().isKeyDown(Input.KEY_SPACE)){
+                shootingTime += delta;
+                if(timeSinceLastShot > projectilesFireRate){
+                    fireProjectiles(new Vector2f(projectilesSpeed, 0), new Projectile());
+                    shootSound.play();
+                }
             }
-        }
-        if((gc.getInput().isKeyDown(Input.KEY_UP) && position.getY() > 10)){
-            position.y -= speed;
-        }
-        if((gc.getInput().isKeyDown(Input.KEY_DOWN) && position.getY() < gc.getHeight() - sprite.getHeight() - 10)){
-            position.y += speed;
-        }
-        if((gc.getInput().isKeyDown(Input.KEY_LEFT)) && position.getX() > 10){
-            position.x -= speed;
-        }
-        if((gc.getInput().isKeyDown(Input.KEY_RIGHT) && position.getX() < gc.getWidth() - sprite.getWidth() - 10)){
-            position.x += speed;
+            if((gc.getInput().isKeyDown(Input.KEY_UP) && position.getY() > 10)){
+                position.y -= speed;
+            }
+            if((gc.getInput().isKeyDown(Input.KEY_DOWN) && position.getY() < gc.getHeight() - sprite.getHeight() - 10)){
+                position.y += speed;
+            }
+            if((gc.getInput().isKeyDown(Input.KEY_LEFT)) && position.getX() > 10){
+                position.x -= speed;
+            }
+            if((gc.getInput().isKeyDown(Input.KEY_RIGHT) && position.getX() < gc.getWidth() - sprite.getWidth() - 10)){
+                position.x += speed;
+            }
         }
     }
     
     protected void destroy(){
         alive = false;
         crashSound.play();
+        position.y = -sprite.getHeight();
     }
     
     public static float getShootingTime(){

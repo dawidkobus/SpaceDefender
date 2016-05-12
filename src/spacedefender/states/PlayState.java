@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import spacedefender.GameEngine;
 import spacedefender.objects.PlayerSpaceship;
 import spacedefender.objects.EnemySpaceship;
+import spacedefender.util.Timer;
 import static spacedefender.GameEngine.HEIGHT;
 import static spacedefender.GameEngine.WIDTH;
 import static spacedefender.states.MenuState.textUniFont;
@@ -121,7 +122,9 @@ public class PlayState extends BasicGameState{
             }
             
             if(!player.isAlive()){
-                sbg.enterState(GameEngine.OVER_STATE);
+                if(Timer.timePassed(1, delta)){
+                    sbg.enterState(GameEngine.OVER_STATE);
+                }
             }
             else{
                 time += delta;
