@@ -49,9 +49,9 @@ public class PlayerSpaceship extends Spaceship{
     }
     
     public void update(GameContainer gc, int delta){
+        super.update(delta);
+        
         if(alive){
-            super.update(delta);
-
             if(gc.getInput().isKeyDown(Input.KEY_SPACE)){
                 shootingTime += delta;
                 if(timeSinceLastShot > projectilesFireRate){
