@@ -38,7 +38,7 @@ public class GameEngine extends StateBasedGame{
         this.addState(new OverState());
         
         backgroundMusic = new Music("res/music/music.ogg");
-        backgroundMusic.loop(1.05f, 0.5f);
+        //backgroundMusic.loop(1.05f, 0.5f);
     }
     
     public static void main(String[] args) throws SlickException{

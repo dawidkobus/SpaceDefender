@@ -123,6 +123,7 @@ public class PlayState extends BasicGameState{
             
             if(!player.isAlive()){
                 if(Timer.timePassed(1, delta)){
+                    gc.getInput().clearKeyPressedRecord();
                     sbg.enterState(GameEngine.OVER_STATE);
                 }
             }

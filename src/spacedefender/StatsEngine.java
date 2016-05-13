@@ -14,8 +14,8 @@ public class StatsEngine{
     private String[] readStats;
     
     public void init(){
+        statsCapacity = 300;
         try{
-            statsCapacity = 60;
             statsFile = new File("res/stats.txt");
             
             scanner = new Scanner(statsFile);
@@ -57,5 +57,9 @@ public class StatsEngine{
         catch(IOException ex){
             System.out.println("IOException");
         }
+    }
+    
+    public int getStatsCapacity(){
+        return statsCapacity;
     }
 }
